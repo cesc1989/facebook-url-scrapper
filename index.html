@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Facebook URL Scrapper</title>
+  <script type="text/javascript" src="jquery.js"></script>
+</head>
+<body>
+<h1>Rescrap an url from your WordPress blog using Open Graph</h1>
+<p>You need a JSON file containing all urls so you can read it with the jQuery script in this document.</p>
+<p>Take a look in the console to see the progress of the process.</p>
+
+<script type="text/javascript">
+
+  $(document).ready(function(){
+
+  	//Base url from facebook debugger tool
+  	//More information in https://developers.facebook.com/blog/post/612/ Updating Objects
+    urlFacebook = "https://graph.facebook.com/?id=";
+
+    //Read json containing all links
+    //If the json file has more fields, make sure the links are contained within
+    //a url field.
+    $.getJSON("enlaces.json", function(data){
+
+      //logging to verify data is loading.
+      console.log(data);
+
+      for(var enlace in data){
+
+      	var url = data[enlace].url;
+
+      	console.log("Scrapping URL...");
+
+      	$.post(urlFacebook+url+"&scrape=true", function(){
+      		console.log("URL scrapped");
+      	});
+
+      }
+
+    });
+
+  });
+
+
+</script>
+
+</body>
+
+</html>
