@@ -1,48 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Facebook URL Scrapper</title>
-  <script type="text/javascript" src="jquery.js"></script>
+    <meta charset="utf-8">
+    <title>Facebook URL Scrapper</title>
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript" src="scrap.js"></script>
 </head>
+<style type="text/css">
+    .wrapper{
+        margin: 0 auto;
+        width: 940px;
+    }
+    .console-box{
+        margin-top: 8px;
+        border:2px solid #000;
+        padding: 8px 8px 8px 16px;
+        background-color: #bcbcbc;
+        min-height: 320px;
+        overflow: scroll;
+    }
+</style>
 <body>
-<h1>Rescrap an url from your WordPress blog using Open Graph</h1>
-<p>You need a JSON file containing all urls so you can read it with the jQuery script in this document.</p>
-<p>Take a look in the console to see the progress of the process.</p>
+<div class="wrapper">
+    <h1>Rescrap an url from your WordPress blog using Open Graph</h1>
+    <p>You need a JSON file containing all urls so you can read it with the jQuery script in this document.</p>
+    <p>Take a look in the console (or below) to see the progress in the process.</p>
 
-<script type="text/javascript">
+    <button id="start">Start rescrapping now!</button>
 
-  $(document).ready(function(){
+    <div class="console-box">
+        <div class="console-text">
 
-  	//Base url from facebook debugger tool
-  	//More information in https://developers.facebook.com/blog/post/612/ Updating Objects
-    urlFacebook = "https://graph.facebook.com/?id=";
+        </div>
+        <div class="url-scrapped">
+            
+        </div>
 
-    //Read json containing all links
-    //If the json file has more fields, make sure the links are contained within
-    //a url field.
-    $.getJSON("enlaces.json", function(data){
+        <div class="process-done">
+            
+        </div>
 
-      //logging to verify data is loading.
-      console.log(data);
+    </div>
 
-      for(var enlace in data){
-
-      	var url = data[enlace].url;
-
-      	console.log("Scrapping URL...");
-
-      	$.post(urlFacebook+url+"&scrape=true", function(){
-      		console.log("URL scrapped");
-      	});
-
-      }
-
-    });
-
-  });
-
-
-</script>
+</div>
 
 </body>
 
